@@ -15,6 +15,35 @@ if (!score) {
  }
 }
 */
+let numC = JSON.parse(localStorage.getItem('numC')) || {
+  even:0
+}
+console.log(numC.even);
+let intervalId;
+function accumuator(){
+  numC.even += 1;
+  console.log(numC.even);
+  localStorage.setItem('numC', JSON.stringify(numC))
+  const atplBtn = document.querySelector('.autoplay-bnt-js')
+
+  if (numC.even%2 === 0){
+    atplBtn.classList.add('autoPlay-on')
+    atplBtn.innerHTML = 'ENABLED'
+    intervalId = setInterval(function autoPlay(){
+        playerMove = pickComputerMove();
+        playGame(playerMove);
+      }, 2000)
+  }else{
+    atplBtn.classList.remove('autoPlay-on');
+    clearInterval(intervalId);
+    atplBtn.innerHTML = 'Auto play'
+
+  }
+
+}
+/**/
+
+
 function updateScoreElement() {
  document.querySelector('.js-score')
    .innerHTML = `wins: ${score.wins}, lost: ${score.loses}, Ties: ${score.ties}`;
@@ -26,9 +55,9 @@ function pickComputerMove () {
  let computerMove = '';
 
  if (randomNumber >= 0  && randomNumber < 1/3) {
-   computerMove = 'Rock';
+   computerMove = 'rock';
  }else if (randomNumber >= 1/3 && randomNumber < 2/3) {
-   computerMove = 'Paper';
+   computerMove = 'paper';
  }else if (randomNumber >= 2/3 && randomNumber < 1) {
    computerMove ='scissors';
  }
@@ -42,32 +71,32 @@ function playGame (playerMove) {
  let result;
 
  if (playerMove === 'scissors') {
-   if ( computerMove === 'Rock') {
-   result = 'You lose!';
-   } else if (computerMove === 'Paper') {
+   if ( computerMove === 'rock') {
+   result = 'You lose!.';
+   } else if (computerMove === 'paper') {
    result = 'You Win!.';
-   } else if (computerMove === 'scisors') {
-   result = 'Tie.';
+   } else if (computerMove === 'scissors') {
+   result = 'Tie!.';
    }
 
  } else if (playerMove === 'paper') {
-     if ( computerMove === 'Rock') {
-     result = 'You WIn!.';
-   } else if (computerMove === 'Paper') {
+     if ( computerMove === 'rock') {
+     result = 'You Win!.';
+   } else if (computerMove === 'paper') {
      result = 'Tie!.';
    } else if (computerMove === 'scissors') {
      result = 'You lose!.';
    }
    
  } else if (playerMove === 'rock') {
-   if ( computerMove === 'Rock') {
+   if ( computerMove === 'rock') {
      result = 'Tie!.';
-   } else if (computerMove === 'Paper') {
+   } else if (computerMove === 'paper') {
      result = 'You lose!.';
    } else if (computerMove === 'scissors') {
-     result = 'You WIn!.';
+     result = 'You Win!.';
    }
- } if (result == 'You WIn!.') {
+ } if (result == 'You Win!.') {
    score.wins += 1;
  } else if (result == 'You lose!.') {
    score.loses += 1;

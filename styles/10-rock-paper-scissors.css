@@ -1,12 +1,20 @@
 
 body{
-  background-color: rgb(25 25 25);
+  background-color: rgb(73, 73, 72);
   color: white;
   font-family: Arial;
 }
 .title{
   font-weight: 30px;
   font-weight: bold;
+}
+button{
+  background-color: white;
+  font-size: 15px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
 }
 .move-icon{
   height: 50px;
@@ -28,14 +36,16 @@ body{
 .score{
   margin-top: 60px;
 }
-.reset-score-btn{
-  background-color: white;
+.autoPlay-on{
+  background-color: rgb(12, 1, 1);
+  color: white;
   font-size: 15px;
   padding: 8px 15px;
   border: none;
   border-radius: 12px;
   cursor: pointer;
 }
+
 .reset-score-btn:active{
   background-color: rgb(221, 217, 217);
   border-radius: 12px;

@@ -29,10 +29,15 @@
    score.wins = 0;
    score.loses = 0;
    score.ties = 0;
+   numC.even = 1;
    localStorage.removeItem('score');
    updateScoreElement()
+   localStorage.removeItem('numC')
   "class="reset-score-btn">Reset score</button>
-
+   <button class="autoplay-bnt-js " onclick="
+   
+    accumuator();
+   ">Auto play</button>
   <script src="scripts/10-rock-paper-scissors.js"></script>
 </body>
 </html>
