@@ -26,7 +26,7 @@ function accumuator(){
   localStorage.setItem('numC', JSON.stringify(numC))
   const atplBtn = document.querySelector('.autoplay-bnt-js')
 
-  if (numC.even%2 === 0){
+  if (numC.even%2 === 0){ 
     atplBtn.classList.add('autoPlay-on')
     atplBtn.innerHTML = 'ENABLED'
     intervalId = setInterval(function autoPlay(){
@@ -65,6 +65,29 @@ function pickComputerMove () {
  return computerMove;
  
 }
+document.body.addEventListener('keydown', (event) => {
+  console.log(event.key)
+  if(event.key === 'r'){
+    playGame('rock');
+  } else if (event.key === 'p'){
+    playGame('paper');
+  } else if(event.key === 's'){
+    playGame('scissors');
+  }
+});
+document.querySelector('.js-btn-rock')
+  .addEventListener('click', () => {
+    playGame('rock');
+  });
+document.querySelector('.js-btn-paper')
+  .addEventListener('click', () => {
+    playGame('paper');
+});
+document.querySelector('.js-btn-scissors')
+  .addEventListener('click', () => {
+    playGame('scissors');
+  });
+
 function playGame (playerMove) {
  const computerMove = pickComputerMove();
 
